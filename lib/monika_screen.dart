@@ -1,3 +1,5 @@
+import 'package:flutter/foundation.dart';
+
 /// Экран диалога в стиле визуальной новеллы, подключённый к `deepseek_module.dart`.
 ///
 /// Что внутри:
