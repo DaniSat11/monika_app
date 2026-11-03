@@ -9,7 +9,7 @@ class MonikaScreen extends StatefulWidget {
 
 class _MonikaScreenState extends State<MonikaScreen> {
   final TextEditingController _controller = TextEditingController();
-  final List> _messages = [
+  final List<dynamic> _messages = [
     {'sender': 'monika', 'text': 'Привет... Я так рада, что ты наконец заглянул ко мне. Как прошёл твой день?'}
   ];
 
@@ -57,7 +57,7 @@ class _MonikaScreenState extends State<MonikaScreen> {
               child: ListView.builder(
                 itemCount: _messages.length,
                 itemBuilder: (context, index) {
-                  final msg = _messages[index];
+                  final msg = _messages[index] as Map<String, String>;
                   final isUser = msg['sender'] == 'user';
                   return Align(
                     alignment: isUser ? Alignment.centerRight : Alignment.centerLeft,
