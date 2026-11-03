@@ -39,7 +39,7 @@ import 'package:flutter/foundation.dart';
 ///
 /// Жизненным циклом [DialogueSession], [DeepSeekService] и [ChatHistoryManager]
 /// владеет приложение (а не экран): экран только пользуется ими.
-library;
+
 
 import 'dart:async';
 import 'dart:math' as math;
