@@ -19,7 +19,6 @@ class _MonikaScreenState extends State<MonikaScreen> {
       _messages.add({'sender': 'user', 'text': _controller.text});
       _controller.clear();
       
-      // Здесь в будущем можно подключить ответ от API
       Future.delayed(const Duration(seconds: 1), () {
         setState(() {
           _messages.add({'sender': 'monika', 'text': 'Я внимательно тебя слушаю~'});
@@ -38,22 +37,19 @@ class _MonikaScreenState extends State<MonikaScreen> {
       ),
       body: Column(
         children: [
-          // Место под спрайт персонажа
           Expanded(
             flex: 5,
             child: Center(
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  const Icon(Icons.person, size: 100, color: Colors.white54),
-                  const SizedBox(height: 10),
-                  const Text('Спрайт персонажа', style: TextStyle(color: Colors.white70)),
+                children: const [
+                  Icon(Icons.person, size: 100, color: Colors.white54),
+                  SizedBox(height: 10),
+                  Text('Спрайт персонажа', style: TextStyle(color: Colors.white70)),
                 ],
               ),
             ),
           ),
-          
-          // Область чата с сообщениями
           Expanded(
             flex: 4,
             child: Container(
@@ -82,8 +78,6 @@ class _MonikaScreenState extends State<MonikaScreen> {
               ),
             ),
           ),
-
-          // Строка ввода сообщения и кнопка отправки
           Container(
             padding: const EdgeInsets.all(8.0),
             color: const Color(0xFF262137),
