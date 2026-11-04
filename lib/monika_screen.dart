@@ -40,8 +40,7 @@ class _MonikaScreenState extends State<MonikaScreen> {
         _isFirstRun = false;
 
         if (savedMessages != null) {
-          // Восстанавливаем историю чата
-          final decoded = jsonDecode(savedMessages) as List;
+          final List<dynamic> decoded = jsonDecode(savedMessages);
           _messages = decoded.map((item) => Map<String, String>.from(item)).toList();
         } else {
           _initGreeting();
@@ -94,7 +93,6 @@ class _MonikaScreenState extends State<MonikaScreen> {
     _saveChatHistory();
   }
 
-  // Функция полного сброса чата
   void _clearChat() {
     showDialog(
       context: context,
@@ -125,7 +123,6 @@ class _MonikaScreenState extends State<MonikaScreen> {
     );
   }
 
-  // Окно с информацией об авторе (Credits)
   void _showAboutDialog() {
     showDialog(
       context: context,
@@ -342,7 +339,6 @@ class _MonikaScreenState extends State<MonikaScreen> {
         ),
         child: Column(
           children: [
-            // Верхняя панель управления
             SafeArea(
               bottom: false,
               child: Container(
@@ -368,19 +364,16 @@ class _MonikaScreenState extends State<MonikaScreen> {
                     ),
                     Row(
                       children: [
-                        // Кнопка информации (Авторы)
                         IconButton(
                           icon: const Icon(Icons.info_outline, color: Colors.white70, size: 20),
                           onPressed: _showAboutDialog,
                           tooltip: 'Credits',
                         ),
-                        // Кнопка очистки чата
                         IconButton(
                           icon: const Icon(Icons.delete_sweep_outlined, color: Colors.white70, size: 20),
                           onPressed: _clearChat,
                           tooltip: 'Clear Chat',
                         ),
-                        // Кнопка сброса настроек (шестеренка)
                         IconButton(
                           icon: const Icon(Icons.settings, color: Colors.white70, size: 20),
                           onPressed: () async {
@@ -399,8 +392,6 @@ class _MonikaScreenState extends State<MonikaScreen> {
                 ),
               ),
             ),
-
-            // Область спрайта персонажа
             Expanded(
               flex: 6,
               child: Center(
@@ -422,8 +413,6 @@ class _MonikaScreenState extends State<MonikaScreen> {
                 ),
               ),
             ),
-
-            // Блок истории сообщений
             Expanded(
               flex: 4,
               child: Container(
@@ -484,14 +473,11 @@ class _MonikaScreenState extends State<MonikaScreen> {
                 ),
               ),
             ),
-
             if (_isLoading)
               const Padding(
                 padding: EdgeInsets.symmetric(vertical: 4),
                 child: LinearProgressIndicator(color: Color(0xFFffb5d5), backgroundColor: Color(0xFF22152b)),
               ),
-
-            // Нижняя панель ввода текста
             Container(
               margin: const EdgeInsets.all(12),
               padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 4),
@@ -516,7 +502,7 @@ class _MonikaScreenState extends State<MonikaScreen> {
                       decoration: InputDecoration(
                         hintText: hintText,
                         hintStyle: const TextStyle(color: Colors.white38),
-                                               border: InputBorder.none,
+                        border: InputBorder.none,
                       ),
                     ),
                   ),
