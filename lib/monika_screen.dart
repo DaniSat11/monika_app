@@ -14,7 +14,7 @@ class _MonikaScreenState extends State<MonikaScreen> {
   final TextEditingController _messageController = TextEditingController();
   final TextEditingController _nameController = TextEditingController();
 
-  var _messages = >[];
+  List<dynamic> _messages = [];
   bool _isLoading = false;
   bool _isFirstRun = true;
 
@@ -40,8 +40,7 @@ class _MonikaScreenState extends State<MonikaScreen> {
         _isFirstRun = false;
 
         if (savedMessages != null) {
-          final decoded = jsonDecode(savedMessages) as List;
-          _messages = decoded.map((item) => Map<String, String>.from(item)).toList();
+          _messages = jsonDecode(savedMessages) as List;
         } else {
           _initGreeting();
         }
@@ -426,7 +425,7 @@ class _MonikaScreenState extends State<MonikaScreen> {
                 child: ListView.builder(
                   itemCount: _messages.length,
                   itemBuilder: (context, index) {
-                    final msg = _messages[index];
+                    final msg = _messages[index] as Map<String, dynamic>;
                     final isUser = msg['sender'] == 'user';
                     return Container(
                       margin: const EdgeInsets.symmetric(vertical: 6),
